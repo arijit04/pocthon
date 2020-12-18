@@ -1,0 +1,16 @@
+<app-nav-view></app-nav-view>
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-6 col-md-6 col-xl-3" *ngFor="let tool of toolList">
+      <div class="border mat-elevation-z12 p-4">
+        <h2 class="text-center">
+          {{tool.name}}
+        </h2>
+        <p class="d-flex justify-content-around">
+          <a [download]="tool.fileUrl" [href]="prefix + tool.fileUrl" class="text-dark">Use this tool</a>
+          <a [download]="tool.maualLink" [href]="prefix + tool.maualLink" class="text-dark">Manual</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

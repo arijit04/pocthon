@@ -1,0 +1,31 @@
+<div class="my-5">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title class="text-center my-4">Search DIF Convention</mat-card-title>
+    <mat-card-content>
+      <form class="row" [formGroup]="difSearchForm" (submit)='searchFormSubmit()'>
+        <div class="col-4">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Enter search id</mat-label>
+            <input matInput placeholder="Enter search id" formControlName="searchId" required>
+            <mat-error *ngIf="difSearchForm.get('searchId').invalid">Enter search id</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <button mat-raised-button color="primary" type="submit" class="w-50 mt-2" [disabled]='difSearchForm.invalid'
+            *ngIf='!loading'>
+            Search
+          </button>
+          <button mat-raised-button color="primary" type="submit" class="w-50 mt-2" [disabled]='difSearchForm.invalid'
+            *ngIf='loading'>
+            <div class="spinner-border text-light" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <div class="mt-3">
+    <app-dif isPrefilled='true' [difData]='difData' *ngIf='showTable'></app-dif>
+  </div>
+</div>

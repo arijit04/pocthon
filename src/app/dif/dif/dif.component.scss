@@ -1,0 +1,17 @@
+.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after{
+    color: black;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-label{
+    color: black !important;
+}
+
+.mat-select-disabled .mat-select-value {
+    color: black;
+}
+
+.mat-select-disabled {
+    ::ng-deep .mat-select-value {
+      color: black /*!important*/;
+    }
+}
