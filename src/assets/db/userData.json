@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Arijit Dhar",
+        "userName": "AD1234",
+        "password": "123456",
+        "role": 1,
+        "toolAccessList": [],
+        "uploadAccess": []
+    },
+    {
+        "id": 2,
+        "name": "Supriya De",
+        "userName": "SD3456",
+        "password": "123456",
+        "role": 2,
+        "toolAccessList": [1,2],
+        "uploadAccess": [1]
+    },
+    {
+        "id": 3,
+        "name": "Sayoni Mukherjee",
+        "userName": "SM5678",
+        "password": "123456",
+        "role": 3,
+        "toolAccessList": [1],
+        "uploadAccess": []
+    },
+    {
+        "id": 4,
+        "name": "Sidhartha Saha",
+        "userName": "SS7890",
+        "password": "123456",
+        "role": 4,
+        "toolAccessList": [1,2],
+        "uploadAccess": []
+    },
+    {
+        "id": 5,
+        "name": "Rick Pasko",
+        "userName": "RP3457",
+        "password": "123456",
+        "role": 5,
+        "toolAccessList": [],
+        "uploadAccess": []
+    }
+]

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-6 col-md-6 col-xl-4 p-2" *ngFor="let tool of toolList; let i = index">
+      <div class="border mat-elevation-z12 p-3 bg-light">
+        <mat-icon class="icon-info" aria-hidden="false" aria-label="{{tool.name}}" matTooltipPosition="after"
+          matTooltip="{{tool.info}}" aria-label="{{tool.info}}" [matTooltipClass]="'my-tooltip'">
+          info
+        </mat-icon>
+        <p class="text-center">
+          <mat-icon class="icon" aria-hidden="false" aria-label="{{tool.name}}">{{tool.icon}}</mat-icon>
+        </p>
+        <h2 class="text-center">
+          {{tool.name}}
+        </h2>
+        <h4 class="text-center">
+          Version: {{tool.version}}
+        </h4>
+        <p class="d-flex justify-content-around">
+          <a (click)="goTo('/tool-repository')" class="text-dark">
+            <button mat-raised-button color="primary" (click)="goToHistory(tool.id)">Tool History</button>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

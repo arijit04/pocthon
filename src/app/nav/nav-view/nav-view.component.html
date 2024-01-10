@@ -1,15 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    POC - AXA
+    <img src="../../../assets/img/cognizant.png" alt="" height="50px">
+    QuickPro ToolHub
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+  <button *ngIf="loggedIn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="loggedIn">
     <div class="navbar-nav">
-      <a mat-button routerLink="/dashboard" > Tool Hub </a>
-      <!-- <a mat-button [routerLink]="'/dif/view'"> View Convention </a> -->
+      <a routerLink="/dashboard" routerLinkActive="active" mat-button class="nav-link" (click)="goTo('/dashboard')"> Dashboard </a>
+      <li class="nav-item dropdown" *ngIf="userDetails.role === 1">
+        <a mat-button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Approve Requests
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item cursor" (click)="goTo('/allow/users')">New Users</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item cursor" (click)="goTo('/allow/tool/access')">Tool Access Request</a>
+          <a class="dropdown-item cursor">New Tool Add Requests</a>
+          <a class="dropdown-item cursor" (click)="goTo('/upload/requests')">Tool Upload Request</a>
+          <a class="dropdown-item cursor" (click)="goTo('/allow/upload/access')">Tool Upgrade Access Requests</a>
+        </div>
+      </li>
+      <a class="nav-link" mat-button routerLinkActive="active" (click)="goTo('/tools/repository')" routerLink="/tools/repository" *ngIf="userDetails.role === 1"> Tool repository </a>
+      <a class="nav-link" mat-button (click)="logOut()"> Log Out </a>
+      <a mat-button class="name-role">
+        <mat-icon class="icon" aria-hidden="false">person</mat-icon>
+        {{userName}} | {{userRole}}</a>
     </div>
   </div>
 </nav>

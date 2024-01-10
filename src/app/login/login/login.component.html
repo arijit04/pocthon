@@ -1,11 +1,28 @@
 <div class="wrapper fadeInDown py-5">
-    <div id="formContent" class="py-5">
-  
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="User Id">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-      </form>
-      <button (click)="login()" class="fadeIn fourth btn btn-primary w-75 mt-2" >Login</button>
-  
+  <div id="formContent" class="py-3">
+    <div class="alert alert-danger" role="alert" *ngIf="loginError">
+      {{message}}
     </div>
+    <form [formGroup]="loginForm">
+      <p class="text-center">
+        <mat-icon class="icon text-center" aria-hidden="false" aria-label="construction">construction</mat-icon>
+      </p>
+      <mat-form-field class="fadeIn second w-75" appearance="outline">
+        <mat-label>Enter User Name</mat-label>
+        <input matInput placeholder="Enter User Name" formControlName="userName" required>
+        <mat-error *ngIf="loginForm.get('userName').invalid">Enter User Name</mat-error>
+      </mat-form-field>
+      <mat-form-field class="fadeIn third w-75" appearance="outline">
+        <mat-label>Enter Password</mat-label>
+        <input matInput placeholder="Enter Password" formControlName="password" required type="password">
+        <mat-error *ngIf="loginForm.get('password').invalid">Enter Password</mat-error>
+      </mat-form-field>
+    </form>
+    <button (click)="login()" class="fadeIn fourth btn btn-primary w-75 mt-2">Login</button>
+    <br>
+      <h2 class="mt-4">
+        <a>Forgot Password</a>
+        <a routerLink="/signup" class="ml-4">Sign Up</a>
+      </h2>
   </div>
+</div>

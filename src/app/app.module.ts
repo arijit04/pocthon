@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { StartupService } from './core/bootstrap/startup.service';
 import { DefaultInterceptor } from './core/interceptors/default.interceptor';
 import { MaterialModule } from './material.module';
-import { LoginComponent } from './login/login/login.component'
+import { LoginComponent } from './login/login/login.component';
+import { ShareModule } from './nav/share.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 export function StartupServiceFactory(startupService: StartupService) {
@@ -19,7 +21,8 @@ export function StartupServiceFactory(startupService: StartupService) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ export function StartupServiceFactory(startupService: StartupService) {
       progressBar: true,
       closeButton: true
     }),
+    ShareModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

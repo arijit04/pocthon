@@ -1,14 +1,38 @@
-<app-nav-view></app-nav-view>
-<div class="container-fluid">
+<div class="container">
   <div class="row mt-4">
-    <div class="col-6 col-md-6 col-xl-3" *ngFor="let tool of toolList">
-      <div class="border mat-elevation-z12 p-4">
+    <div class="col-6 col-md-6 col-xl-4 p-2" *ngFor="let tool of toolList; let i = index">
+      <div class="border mat-elevation-z12 p-3 bg-light m275">
+        <mat-icon class="icon-info" aria-hidden="false" aria-label="{{tool.name}}" matTooltipPosition="after"
+          matTooltip="{{tool.info}}" aria-label="{{tool.info}}" [matTooltipClass]="'my-tooltip'">
+          info
+        </mat-icon>
+        <p class="text-center">
+          <mat-icon class="icon" aria-hidden="false" aria-label="{{tool.name}}">{{tool.icon}}</mat-icon>
+        </p>
         <h2 class="text-center">
           {{tool.name}}
         </h2>
+        <h4 class="text-center">
+          Version: {{tool.version}}
+        </h4>
         <p class="d-flex justify-content-around">
-          <a [download]="tool.fileUrl" [href]="prefix + tool.fileUrl" class="text-dark">Use this tool</a>
-          <a [download]="tool.maualLink" [href]="prefix + tool.maualLink" class="text-dark">Manual</a>
+          <a [download]="tool.fileUrl" [href]="prefix + tool.fileUrl" class="text-dark">
+            <button mat-raised-button color="primary" [disabled]="checkAccess(tool.id)">Run</button>
+          </a>
+          <a [download]="tool.maualLink" [href]="prefix + tool.maualLink" class="text-dark">
+            <button mat-raised-button class="guideBtn" [disabled]="checkAccess(tool.id)">User Guide</button>
+          </a>
+        </p>
+        <p class="d-flex justify-content-around">
+          <a *ngIf="checkUploadAccess(tool.id)">
+            <button mat-raised-button class="uploadBtn">Upload a new version</button>
+          </a>
+          <a (click)="requestUploadAccess()" class="text-dark" *ngIf="checkUploadAccessWithRunAccess(tool.id)">
+            <button mat-raised-button class="requestAccessBtn">Request Upload Access</button>
+          </a>
+          <a (click)="requestAccess()" class="text-dark" *ngIf="checkAccess(tool.id)">
+            <button mat-raised-button class="requestAccessBtn">Request Access</button>
+          </a>
         </p>
       </div>
     </div>

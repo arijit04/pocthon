@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2 class="text-center text-white">
+        Approve Tool Upload Request
+      </h2>
+    </div>
+    <div class="col-9 offset-1">
+      <div class="main-box text-center mat-elevation-z24">
+        <table class="table table-hover table-responsive table-bordered ">
+          <thead>
+            <tr>
+              <th scope="col">Sl No.</th>
+              <th scope="col">User Id</th>
+              <th scope="col">User Name</th>
+              <th scope="col">User Role</th>
+              <th scope="col">Upload Date</th>
+              <th scope="col">Version</th>
+              <th scope="col">Tool Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of fileUpdateRequests; let i = index">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{item.userId}}</td>
+              <td>{{item.userName}}</td>
+              <td>{{getRole(item.role)}}</td>
+              <td>{{item.date}}</td>
+              <td>{{item.version}}</td>
+              <td>{{getToolName(item.toolId)}}</td>
+              <td>
+                <button mat-raised-button color="primary" (click)="allowUser(i)">
+                  Allow
+                </button>
+                <button class="ml-4 rejectBtn" mat-raised-button color="primary" (click)="rejectUser(i)">
+                  Reject
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2 class="text-center text-white">
+        {{toolName}}
+      </h2>
+    </div>
+    <div class="col-6 offset-3">
+      <div class="main-box text-center mat-elevation-z24">
+        <table class="table table-hover table-responsive table-bordered ">
+          <thead>
+            <tr>
+              <th scope="col">Sl No.</th>
+              <th scope="col" colspan="2">Uploaded By</th>
+              <th scope="col">Date</th>
+              <th scope="col">Version</th>
+              <th scope="col">Active</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="isHistoryPresent">
+            <tr *ngFor="let item of selectedToolHistory.history; let i = index">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{item.uploadBy.userId}}</td>
+              <td>{{item.uploadBy.userName}}</td>
+              <td>{{item.date}}</td>
+              <td>{{item.version}}</td>
+              <td>{{activeHistoryId === item.id ? 'Yes' : 'No'}}</td>
+              <td>
+                <button mat-raised-button color="primary" (click)="activeToolVersion(item.id)"
+                  [disabled]="activeHistoryId === item.id">
+                  {{activeHistoryId === item.id ? 'Active' : 'Restore'}}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
